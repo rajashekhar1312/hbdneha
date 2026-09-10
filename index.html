@@ -7,11 +7,14 @@
     <title>Happy Birthday Neha 🎂</title>
 
     <style>
-
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
         }
 
         body {
@@ -136,13 +139,13 @@
         }
 
         /* =========================
-           MESSAGE
+           BIRTHDAY MESSAGE
         ========================= */
 
         .message-box {
             max-width: 800px;
             margin: auto;
-            background: rgba(255, 255, 255, 0.75);
+            background: rgba(255, 255, 255, 0.8);
             padding: 40px;
             border-radius: 25px;
             box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
@@ -151,7 +154,7 @@
         }
 
         /* =========================
-           PHOTO GALLERY
+           GALLERY
         ========================= */
 
         .gallery {
@@ -215,7 +218,7 @@
         }
 
         /* =========================
-           SURPRISE
+           FINAL SURPRISE
         ========================= */
 
         .surprise-section {
@@ -228,10 +231,26 @@
             display: inline-block;
             animation: bounce 2s infinite;
             transition: 0.3s;
+            user-select: none;
         }
 
         .big-gift:hover {
             transform: scale(1.1);
+        }
+
+        #videoContainer {
+            display: none;
+            max-width: 850px;
+            margin: 30px auto 0;
+            animation: fadeIn 1s ease;
+        }
+
+        #birthdayVideo {
+            width: 100%;
+            max-height: 500px;
+            border-radius: 20px;
+            background: #000;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
         }
 
         #surpriseMessage {
@@ -281,10 +300,9 @@
 
         .confetti {
             position: fixed;
-            width: 10px;
-            height: 10px;
-            top: -10px;
+            top: -20px;
             z-index: 9998;
+            pointer-events: none;
             animation: confettiFall 3s linear forwards;
         }
 
@@ -293,7 +311,6 @@
         ========================= */
 
         @keyframes bounce {
-
             0%, 100% {
                 transform: translateY(0);
             }
@@ -301,11 +318,9 @@
             50% {
                 transform: translateY(-20px);
             }
-
         }
 
         @keyframes fadeIn {
-
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -315,11 +330,9 @@
                 opacity: 1;
                 transform: translateY(0);
             }
-
         }
 
         @keyframes floatUp {
-
             from {
                 transform: translateY(0) rotate(0deg);
                 opacity: 0;
@@ -333,11 +346,9 @@
                 transform: translateY(-110vh) rotate(360deg);
                 opacity: 0;
             }
-
         }
 
         @keyframes confettiFall {
-
             from {
                 transform: translateY(0) rotate(0deg);
                 opacity: 1;
@@ -347,7 +358,6 @@
                 transform: translateY(110vh) rotate(720deg);
                 opacity: 0;
             }
-
         }
 
         /* =========================
@@ -358,6 +368,10 @@
 
             .opening-content h1 {
                 font-size: 2.2rem;
+            }
+
+            .opening-content p {
+                font-size: 1rem;
             }
 
             .hero h1 {
@@ -385,15 +399,15 @@
                 font-size: 90px;
             }
 
+            #surpriseMessage {
+                padding: 25px;
+                font-size: 1rem;
+            }
         }
-
     </style>
-
 </head>
 
-
 <body>
-
 
     <!-- =========================
          OPENING SCREEN
@@ -424,14 +438,11 @@
     </div>
 
 
-    <!-- =========================
-         MAIN WEBSITE
-    ========================= -->
-
     <main>
 
-
-        <!-- HERO -->
+        <!-- =========================
+             HERO
+        ========================= -->
 
         <section class="hero">
 
@@ -464,38 +475,41 @@
             <div class="message-box">
 
                 <p>
-                    Happy Birthday to one of the most amazing people
-                    I've had the chance to know! 🎉
+                    <strong>Happy Birthday, Neha! 🎉</strong>
                 </p>
 
                 <br>
 
                 <p>
-                    Life would definitely be a lot more boring without
-                    all the conversations, random jokes, stupid arguments,
-                    unforgettable moments and all the madness we've shared. 😂
+                    It has been really nice getting to know you, and I’m
+                    genuinely glad that we’ve had the opportunity to become
+                    friends. Our conversations and the moments we’ve shared
+                    have made this friendship really special and enjoyable. 😊
                 </p>
 
                 <br>
 
                 <p>
-                    Thank you for being the wonderful friend that you are.
-                    I genuinely hope this year brings you everything you've
-                    been wishing for and much more.
+                    I truly wish you happiness, success, good health, and
+                    many wonderful experiences in the year ahead. May you
+                    achieve everything you’re working towards and always
+                    have plenty of reasons to smile.
                 </p>
 
                 <br>
 
                 <p>
-                    Keep smiling, keep laughing, keep annoying people
-                    occasionally 😜 and most importantly,
-                    never stop being YOU.
+                    Keep being the wonderful person you are, and I hope we
+                    continue to share many more meaningful conversations,
+                    good memories, and happy moments together.
                 </p>
 
                 <br>
 
                 <p>
-                    Have the BEST birthday ever, Neha! 🎂🥳❤️
+                    <strong>
+                        Wishing you a very Happy Birthday, Neha! 🎂🥳❤️
+                    </strong>
                 </p>
 
             </div>
@@ -504,7 +518,7 @@
 
 
         <!-- =========================
-             MEMORIES
+             PHOTO GALLERY
         ========================= -->
 
         <section>
@@ -521,11 +535,8 @@
             <div class="gallery">
 
                 <img src="images/photo1.png" alt="Memory 1">
-
                 <img src="images/photo2.jpg" alt="Memory 2">
-
                 <img src="images/photo3.jpg" alt="Memory 3">
-
                 <img src="images/photo4.jpg" alt="Memory 4">
 
             </div>
@@ -548,9 +559,7 @@
                 to their completely unique personality.
             </p>
 
-
             <div class="cards">
-
 
                 <div class="card">
 
@@ -582,8 +591,8 @@
 
                     <p>
                         From serious discussions to completely
-                        pointless conversations... somehow we talk
-                        about everything.
+                        unexpected conversations, there is always
+                        something interesting to talk about.
                     </p>
 
                 </div>
@@ -592,20 +601,19 @@
                 <div class="card">
 
                     <div class="emoji">
-                        🤪
+                        ✨
                     </div>
 
                     <h3>
-                        The Madness
+                        The Personality
                     </h3>
 
                     <p>
-                        Normal is overrated anyway. 😂
-                        Keep the madness going!
+                        Your unique personality is what makes getting
+                        to know you such a genuinely enjoyable experience.
                     </p>
 
                 </div>
-
 
             </div>
 
@@ -613,60 +621,82 @@
 
 
         <!-- =========================
-             SURPRISE GIFT
+             FINAL FUNNY VIDEO
         ========================= -->
 
         <section class="surprise-section">
 
             <h2>
-                One Last Surprise 🎁
+                One Last Surprise 😂🎁
             </h2>
 
             <p class="section-subtitle">
-                There's something waiting for you.
-                Go on... click the gift!
+                Okay, enough of the emotional stuff... 😂<br>
+                I saved something funny for the end.<br>
+                Click the gift — you won't want to miss this!
             </p>
 
             <div
                 class="big-gift"
                 onclick="showSurprise()"
+                id="giftBox"
+                title="Click me!"
             >
                 🎁
             </div>
 
 
-            <div id="surpriseMessage">
+            <div id="videoContainer">
 
-                <p>
-                    🎉 SURPRISE! 🎉
-                </p>
+                <video
+                    id="birthdayVideo"
+                    controls
+                    playsinline
+                    preload="metadata"
+                >
+                    <source
+                        src="birthday-video.mp4"
+                        type="video/mp4"
+                    >
 
-                <br>
+                    Your browser does not support the video.
 
-                <p>
-                    I hope this little website made you smile. 😊
-                </p>
+                </video>
 
-                <br>
 
-                <p>
-                    Here's to another year of crazy memories,
-                    endless laughs, random conversations and
-                    lots of amazing moments!
-                </p>
+                <div id="surpriseMessage">
 
-                <br>
+                    <p>
+                        😂 Okay, I hope you enjoyed that!
+                    </p>
 
-                <p>
-                    <strong>
-                        Happy Birthday once again, Neha! ❤️
-                    </strong>
-                </p>
+                    <br>
+
+                    <p>
+                        Consider this my final birthday surprise. 😜
+                    </p>
+
+                    <br>
+
+                    <p>
+                        Wishing you an amazing year ahead,
+                        filled with happiness, success and lots of
+                        reasons to laugh!
+                    </p>
+
+                    <br>
+
+                    <p>
+                        <strong>
+                            Happy Birthday once again, Neha! 🎂🥳❤️
+                        </strong>
+                    </p>
+
+                </div>
 
             </div>
 
         </section>
-
 
     </main>
 
@@ -675,13 +705,8 @@
          BACKGROUND MUSIC
     ========================= -->
 
-    <audio id="birthdayMusic" loop>
-
-        <source
-            src="music.mp3"
-            type="audio/mpeg"
-        >
-
+    <audio id="birthdayMusic" loop preload="auto">
+        <source src="music.mp3" type="audio/mpeg">
     </audio>
 
 
@@ -703,9 +728,16 @@
 
     <script>
 
+        /* =========================
+           ELEMENTS
+        ========================= */
+
+        const music = document.getElementById("birthdayMusic");
+        const video = document.getElementById("birthdayVideo");
+
 
         /* =========================
-           OPEN SURPRISE + MUSIC
+           OPEN SURPRISE
         ========================= */
 
         function openSurprise() {
@@ -714,29 +746,16 @@
                 .getElementById("opening")
                 .classList.add("hide");
 
-
-            const music =
-                document.getElementById("birthdayMusic");
-
-
-            /*
-             * Start music after the user's click.
-             * This avoids browser autoplay restrictions.
-             */
-
+            // Start background music only after the user clicks.
             music.volume = 1.0;
 
             music.play().catch(() => {
-
-                console.log(
-                    "Browser blocked audio playback."
-                );
-
+                console.log("Browser blocked music playback.");
             });
-
 
             createConfetti();
 
+            startFloatingEmojis();
         }
 
 
@@ -749,38 +768,109 @@
             document
                 .getElementById("message")
                 .scrollIntoView({
-                    behavior: "smooth"
+                    behavior: "smooth",
+                    block: "start"
                 });
 
         }
 
 
         /* =========================
-           SURPRISE GIFT
+           SHOW FINAL VIDEO
         ========================= */
 
         function showSurprise() {
 
-            const message =
+            const videoContainer =
+                document.getElementById("videoContainer");
+
+            const giftBox =
+                document.getElementById("giftBox");
+
+            const surpriseMessage =
                 document.getElementById("surpriseMessage");
 
+            videoContainer.style.display = "block";
 
-            message.style.display = "block";
+            giftBox.style.display = "none";
 
+            surpriseMessage.style.display = "none";
 
             createConfetti();
 
+            videoContainer.scrollIntoView({
+                behavior: "smooth",
+                block: "center"
+            });
 
-            setTimeout(() => {
+            /*
+             * The gift was clicked by the user,
+             * so the browser should allow video playback.
+             */
+            video.play().catch(() => {
+                console.log("Video playback was blocked. Press play.");
+            });
+        }
 
-                message.scrollIntoView({
+
+        /* =========================
+           VIDEO + MUSIC
+        ========================= */
+
+        /*
+         * Video starts:
+         * Stop background music.
+         */
+        video.addEventListener("play", function () {
+
+            music.pause();
+
+        });
+
+
+        /*
+         * Video is manually paused:
+         * Resume background music.
+         */
+        video.addEventListener("pause", function () {
+
+            if (!video.ended) {
+
+                music.play().catch(() => {
+                    console.log("Music could not resume automatically.");
+                });
+
+            }
+
+        });
+
+
+        /*
+         * Video finishes:
+         * Resume background music,
+         * show final message,
+         * create another confetti effect.
+         */
+        video.addEventListener("ended", function () {
+
+            music.play().catch(() => {
+                console.log("Music could not resume automatically.");
+            });
+
+            document
+                .getElementById("surpriseMessage")
+                .style.display = "block";
+
+            createConfetti();
+
+            document
+                .getElementById("surpriseMessage")
+                .scrollIntoView({
                     behavior: "smooth",
                     block: "center"
                 });
 
-            }, 100);
-
-        }
+        });
 
 
         /* =========================
@@ -799,48 +889,37 @@
                 "❤️"
             ];
 
-
             for (let i = 0; i < 60; i++) {
 
                 const confetti =
                     document.createElement("div");
 
+                confetti.className = "confetti";
 
-                confetti.className =
-                    "confetti";
-
-
-                confetti.innerHTML =
+                confetti.textContent =
                     emojis[
                         Math.floor(
-                            Math.random() *
-                            emojis.length
+                            Math.random() * emojis.length
                         )
                     ];
-
 
                 confetti.style.left =
                     Math.random() * 100 + "vw";
 
-
                 confetti.style.fontSize =
-                    (Math.random() * 15 + 10) + "px";
-
+                    (12 + Math.random() * 20) + "px";
 
                 confetti.style.animationDuration =
-                    (Math.random() * 2 + 2) + "s";
+                    (2 + Math.random() * 3) + "s";
 
+                confetti.style.animationDelay =
+                    Math.random() * 1.5 + "s";
 
-                document.body.appendChild(
-                    confetti
-                );
-
+                document.body.appendChild(confetti);
 
                 setTimeout(() => {
-
                     confetti.remove();
-
-                }, 4000);
+                }, 5000);
 
             }
 
@@ -851,65 +930,49 @@
            FLOATING EMOJIS
         ========================= */
 
-        function createFloatingEmoji() {
+        function startFloatingEmojis() {
 
             const emojis = [
-                "❤️",
+                "💖",
                 "✨",
                 "🎈",
                 "🥳",
-                "💖",
-                "⭐"
+                "💕",
+                "🎂",
+                "🌸"
             ];
 
+            setInterval(() => {
 
-            const emoji =
-                document.createElement("div");
+                const floating =
+                    document.createElement("div");
 
+                floating.className = "floating";
 
-            emoji.className =
-                "floating";
+                floating.textContent =
+                    emojis[
+                        Math.floor(
+                            Math.random() * emojis.length
+                        )
+                    ];
 
+                floating.style.left =
+                    Math.random() * 100 + "vw";
 
-            emoji.innerHTML =
-                emojis[
-                    Math.floor(
-                        Math.random() *
-                        emojis.length
-                    )
-                ];
+                floating.style.animationDuration =
+                    (5 + Math.random() * 5) + "s";
 
+                document.body.appendChild(floating);
 
-            emoji.style.left =
-                Math.random() * 100 + "vw";
+                setTimeout(() => {
+                    floating.remove();
+                }, 10000);
 
-
-            emoji.style.animationDuration =
-                (Math.random() * 6 + 6) + "s";
-
-
-            document.body.appendChild(
-                emoji
-            );
-
-
-            setTimeout(() => {
-
-                emoji.remove();
-
-            }, 12000);
+            }, 1200);
 
         }
 
-
-        setInterval(
-            createFloatingEmoji,
-            1200
-        );
-
-
     </script>
-
 
 </body>
 </html>
