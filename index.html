@@ -1,978 +1,1898 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Happy Birthday Neha 🎂</title>
-
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        html {
-            scroll-behavior: smooth;
-        }
-
-        body {
-            font-family: "Segoe UI", Arial, sans-serif;
-            background: linear-gradient(135deg, #ffe4ec, #e8d9ff, #dff6ff);
-            color: #333;
-            overflow-x: hidden;
-        }
-
-        /* =========================
-           OPENING SCREEN
-        ========================= */
-
-        #opening {
-            position: fixed;
-            inset: 0;
-            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            z-index: 9999;
-            transition: opacity 1s ease, visibility 1s ease;
-        }
-
-        #opening.hide {
-            opacity: 0;
-            visibility: hidden;
-        }
-
-        .opening-content {
-            padding: 30px;
-        }
-
-        .gift {
-            font-size: 100px;
-            animation: bounce 1.5s infinite;
-            cursor: pointer;
-        }
-
-        .opening-content h1 {
-            font-size: 3rem;
-            color: white;
-            margin: 20px 0 10px;
-        }
-
-        .opening-content p {
-            color: white;
-            font-size: 1.2rem;
-            margin-bottom: 25px;
-        }
-
-        /* =========================
-           BUTTONS
-        ========================= */
-
-        button {
-            border: none;
-            padding: 14px 28px;
-            border-radius: 30px;
-            font-size: 1rem;
-            font-weight: bold;
-            cursor: pointer;
-            background: white;
-            color: #e75480;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
-            transition: 0.3s;
-        }
-
-        button:hover {
-            transform: translateY(-3px) scale(1.03);
-        }
-
-        /* =========================
-           HERO
-        ========================= */
-
-        .hero {
-            min-height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        .hero h1 {
-            font-size: 4rem;
-            color: #e75480;
-            margin-bottom: 20px;
-            animation: fadeIn 1.5s ease;
-        }
-
-        .hero p {
-            max-width: 750px;
-            font-size: 1.25rem;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        /* =========================
-           SECTIONS
-        ========================= */
-
-        section {
-            padding: 80px 20px;
-            text-align: center;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            color: #d94f7d;
-            margin-bottom: 20px;
-        }
-
-        .section-subtitle {
-            max-width: 700px;
-            margin: 0 auto 40px;
-            line-height: 1.7;
-            color: #666;
-        }
-
-        /* =========================
-           BIRTHDAY MESSAGE
-        ========================= */
-
-        .message-box {
-            max-width: 800px;
-            margin: auto;
-            background: rgba(255, 255, 255, 0.8);
-            padding: 40px;
-            border-radius: 25px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
-            line-height: 1.9;
-            font-size: 1.1rem;
-        }
-
-        /* =========================
-           GALLERY
-        ========================= */
-
-        .gallery {
-            max-width: 1100px;
-            margin: 40px auto 0;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-
-        .gallery img {
-            width: 100%;
-            height: 280px;
-            object-fit: cover;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
-            transition: 0.4s;
-        }
-
-        .gallery img:hover {
-            transform: scale(1.05) rotate(1deg);
-        }
-
-        /* =========================
-           FUN CARDS
-        ========================= */
-
-        .cards {
-            max-width: 1000px;
-            margin: 40px auto;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 25px;
-        }
-
-        .card {
-            background: white;
-            padding: 30px;
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
-            transition: 0.3s;
-        }
-
-        .card:hover {
-            transform: translateY(-8px);
-        }
-
-        .card .emoji {
-            font-size: 50px;
-            margin-bottom: 15px;
-        }
-
-        .card h3 {
-            color: #d94f7d;
-            margin-bottom: 10px;
-        }
-
-        .card p {
-            color: #666;
-            line-height: 1.6;
-        }
-
-        /* =========================
-           FINAL SURPRISE
-        ========================= */
-
-        .surprise-section {
-            background: rgba(255, 255, 255, 0.35);
-        }
-
-        .big-gift {
-            font-size: 120px;
-            cursor: pointer;
-            display: inline-block;
-            animation: bounce 2s infinite;
-            transition: 0.3s;
-            user-select: none;
-        }
-
-        .big-gift:hover {
-            transform: scale(1.1);
-        }
-
-        #videoContainer {
-            display: none;
-            max-width: 850px;
-            margin: 30px auto 0;
-            animation: fadeIn 1s ease;
-        }
-
-        #birthdayVideo {
-            width: 100%;
-            max-height: 500px;
-            border-radius: 20px;
-            background: #000;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.2);
-        }
-
-        #surpriseMessage {
-            display: none;
-            max-width: 700px;
-            margin: 30px auto 0;
-            padding: 30px;
-            background: white;
-            border-radius: 25px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
-            font-size: 1.2rem;
-            line-height: 1.8;
-            animation: fadeIn 1s ease;
-        }
-
-        /* =========================
-           FLOATING EMOJIS
-        ========================= */
-
-        .floating {
-            position: fixed;
-            bottom: -50px;
-            font-size: 25px;
-            animation: floatUp linear infinite;
-            pointer-events: none;
-            z-index: 0;
-        }
-
-        /* =========================
-           FOOTER
-        ========================= */
-
-        footer {
-            padding: 30px 20px;
-            text-align: center;
-            background: rgba(255, 255, 255, 0.5);
-            color: #777;
-        }
-
-        footer strong {
-            color: #e75480;
-        }
-
-        /* =========================
-           CONFETTI
-        ========================= */
-
-        .confetti {
-            position: fixed;
-            top: -20px;
-            z-index: 9998;
-            pointer-events: none;
-            animation: confettiFall 3s linear forwards;
-        }
-
-        /* =========================
-           ANIMATIONS
-        ========================= */
-
-        @keyframes bounce {
-            0%, 100% {
-                transform: translateY(0);
-            }
-
-            50% {
-                transform: translateY(-20px);
-            }
-        }
-
-        @keyframes fadeIn {
-            from {
-                opacity: 0;
-                transform: translateY(20px);
-            }
-
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        @keyframes floatUp {
-            from {
-                transform: translateY(0) rotate(0deg);
-                opacity: 0;
-            }
-
-            10% {
-                opacity: 1;
-            }
-
-            to {
-                transform: translateY(-110vh) rotate(360deg);
-                opacity: 0;
-            }
-        }
-
-        @keyframes confettiFall {
-            from {
-                transform: translateY(0) rotate(0deg);
-                opacity: 1;
-            }
-
-            to {
-                transform: translateY(110vh) rotate(720deg);
-                opacity: 0;
-            }
-        }
-
-        /* =========================
-           MOBILE
-        ========================= */
-
-        @media (max-width: 600px) {
-
-            .opening-content h1 {
-                font-size: 2.2rem;
-            }
-
-            .opening-content p {
-                font-size: 1rem;
-            }
-
-            .hero h1 {
-                font-size: 2.7rem;
-            }
-
-            .hero p {
-                font-size: 1rem;
-            }
-
-            section h2 {
-                font-size: 2rem;
-            }
-
-            .message-box {
-                padding: 25px;
-                font-size: 1rem;
-            }
-
-            .gallery img {
-                height: 230px;
-            }
-
-            .big-gift {
-                font-size: 90px;
-            }
-
-            #surpriseMessage {
-                padding: 25px;
-                font-size: 1rem;
-            }
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Happy Birthday Neha 🎂❤️</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    scroll-behavior: smooth;
+}
+
+body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    color: #4a3040;
+    overflow-x: hidden;
+
+    background:
+        radial-gradient(circle at 10% 20%, rgba(255,255,255,.8), transparent 25%),
+        radial-gradient(circle at 90% 10%, rgba(255,180,210,.35), transparent 30%),
+        linear-gradient(135deg, #fff0f6, #ffe5ef, #fcecff, #e9f5ff);
+
+    background-size: 100% 100%;
+    min-height: 100vh;
+}
+
+/* Animated background glow */
+
+body::before,
+body::after {
+    content: "";
+    position: fixed;
+    width: 450px;
+    height: 450px;
+    border-radius: 50%;
+    filter: blur(90px);
+    opacity: .25;
+    z-index: -2;
+    animation: backgroundOrb 12s ease-in-out infinite alternate;
+}
+
+body::before {
+    background: #ff8fbd;
+    top: -150px;
+    left: -120px;
+}
+
+body::after {
+    background: #b996ff;
+    right: -150px;
+    bottom: -150px;
+    animation-delay: -5s;
+}
+
+@keyframes backgroundOrb {
+    0% {
+        transform: translate(0, 0) scale(1);
+    }
+
+    50% {
+        transform: translate(80px, 50px) scale(1.2);
+    }
+
+    100% {
+        transform: translate(-50px, 100px) scale(.9);
+    }
+}
+
+/* =========================================================
+   FLOATING PARTICLES
+========================================================= */
+
+.floating {
+    position: fixed;
+    bottom: -50px;
+    pointer-events: none;
+    z-index: 100;
+    animation: floatUp linear forwards;
+    opacity: .8;
+}
+
+@keyframes floatUp {
+    0% {
+        transform: translateY(0) rotate(0deg) scale(.7);
+        opacity: 0;
+    }
+
+    15% {
+        opacity: 1;
+    }
+
+    50% {
+        transform: translateY(-50vh) rotate(180deg) scale(1);
+    }
+
+    100% {
+        transform: translateY(-115vh) rotate(360deg) scale(.6);
+        opacity: 0;
+    }
+}
+
+/* =========================================================
+   OPENING SCREEN
+========================================================= */
+
+#opening {
+    position: fixed;
+    inset: 0;
+    z-index: 1000;
+
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+
+    background:
+        radial-gradient(circle at center, rgba(255,255,255,.95), rgba(255,225,240,.92)),
+        linear-gradient(135deg, #ffd6e7, #f7dcff);
+
+    transition:
+        opacity 1s ease,
+        visibility 1s ease,
+        transform 1s ease;
+}
+
+#opening.hide {
+    opacity: 0;
+    visibility: hidden;
+    transform: scale(1.08);
+    pointer-events: none;
+}
+
+.opening-content {
+    position: relative;
+    padding: 30px;
+    animation: openingAppear 1.5s ease;
+}
+
+@keyframes openingAppear {
+    from {
+        opacity: 0;
+        transform: translateY(40px) scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.opening-content::before {
+    content: "";
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    left: 50%;
+    top: 45%;
+    transform: translate(-50%, -50%);
+    background: rgba(255, 130, 180, .25);
+    filter: blur(60px);
+    border-radius: 50%;
+    animation: glowPulse 2.5s infinite alternate;
+    z-index: -1;
+}
+
+@keyframes glowPulse {
+    from {
+        transform: translate(-50%, -50%) scale(.8);
+        opacity: .4;
+    }
+
+    to {
+        transform: translate(-50%, -50%) scale(1.3);
+        opacity: .8;
+    }
+}
+
+.gift {
+    font-size: 110px;
+    cursor: pointer;
+    display: inline-block;
+
+    filter: drop-shadow(0 15px 25px rgba(255, 90, 150, .3));
+
+    animation:
+        giftBounce 2s ease-in-out infinite,
+        giftGlow 2s ease-in-out infinite alternate;
+}
+
+@keyframes giftBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(-2deg);
+    }
+
+    50% {
+        transform: translateY(-22px) rotate(3deg);
+    }
+}
+
+@keyframes giftGlow {
+    from {
+        filter: drop-shadow(0 10px 15px rgba(255, 100, 160, .2));
+    }
+
+    to {
+        filter: drop-shadow(0 15px 35px rgba(255, 60, 150, .65));
+    }
+}
+
+.gift:hover {
+    animation:
+        giftShake .5s ease-in-out,
+        giftGlow 1s ease-in-out infinite alternate;
+}
+
+@keyframes giftShake {
+    0%, 100% {
+        transform: rotate(0);
+    }
+
+    25% {
+        transform: rotate(-10deg);
+    }
+
+    50% {
+        transform: rotate(10deg);
+    }
+
+    75% {
+        transform: rotate(-7deg);
+    }
+}
+
+.opening-content h1 {
+    font-size: clamp(2rem, 6vw, 4rem);
+    margin: 20px 0 10px;
+
+    background: linear-gradient(
+        90deg,
+        #ff4f91,
+        #a85cff,
+        #ff4f91
+    );
+
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    animation: gradientText 4s linear infinite;
+}
+
+@keyframes gradientText {
+    to {
+        background-position: 200% center;
+    }
+}
+
+.opening-content p {
+    font-size: 1.2rem;
+    margin-bottom: 30px;
+    opacity: .85;
+}
+
+/* =========================================================
+   BUTTONS
+========================================================= */
+
+button {
+    border: none;
+    cursor: pointer;
+    font-size: 1rem;
+    font-weight: bold;
+}
+
+.main-button {
+    padding: 16px 30px;
+    border-radius: 50px;
+
+    color: white;
+
+    background:
+        linear-gradient(135deg, #ff4f91, #b95cff);
+
+    box-shadow:
+        0 10px 25px rgba(214, 76, 145, .3),
+        0 0 0 rgba(255, 100, 170, 0);
+
+    transition: all .35s ease;
+
+    animation: buttonPulse 2.5s infinite;
+}
+
+@keyframes buttonPulse {
+    0%, 100% {
+        box-shadow:
+            0 10px 25px rgba(214, 76, 145, .3),
+            0 0 0 rgba(255, 100, 170, 0);
+    }
+
+    50% {
+        box-shadow:
+            0 15px 35px rgba(214, 76, 145, .45),
+            0 0 25px rgba(255, 100, 170, .25);
+    }
+}
+
+.main-button:hover {
+    transform: translateY(-5px) scale(1.05);
+}
+
+/* =========================================================
+   HERO
+========================================================= */
+
+.hero {
+    min-height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+
+    position: relative;
+    padding: 30px;
+}
+
+.hero-content {
+    animation: heroEntrance 1.5s ease both;
+}
+
+@keyframes heroEntrance {
+    from {
+        opacity: 0;
+        transform: translateY(60px) scale(.9);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+    }
+}
+
+.hero h1 {
+    font-size: clamp(3rem, 8vw, 7rem);
+    line-height: 1.05;
+
+    background:
+        linear-gradient(
+            90deg,
+            #ff4f91,
+            #ff78a9,
+            #a65cff,
+            #ff4f91
+        );
+
+    background-size: 300% auto;
+
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+
+    animation:
+        gradientText 5s linear infinite,
+        titleFloat 4s ease-in-out infinite;
+
+    text-shadow: 0 10px 30px rgba(255, 90, 150, .15);
+}
+
+@keyframes titleFloat {
+    0%, 100% {
+        transform: translateY(0);
+    }
+
+    50% {
+        transform: translateY(-8px);
+    }
+}
+
+.hero p {
+    max-width: 750px;
+    margin: 30px auto;
+    font-size: 1.25rem;
+    line-height: 1.8;
+    opacity: .85;
+}
+
+/* Hero decorations */
+
+.hero-decoration {
+    position: absolute;
+    font-size: 40px;
+    animation: decorationFloat 4s ease-in-out infinite;
+}
+
+.decor1 {
+    top: 15%;
+    left: 10%;
+}
+
+.decor2 {
+    top: 25%;
+    right: 12%;
+    animation-delay: -1s;
+}
+
+.decor3 {
+    bottom: 20%;
+    left: 15%;
+    animation-delay: -2s;
+}
+
+.decor4 {
+    bottom: 15%;
+    right: 15%;
+    animation-delay: -3s;
+}
+
+@keyframes decorationFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-8deg);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(8deg);
+    }
+}
+
+/* Scroll indicator */
+
+.scroll-indicator {
+    position: absolute;
+    bottom: 25px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 25px;
+    animation: scrollBounce 1.5s infinite;
+}
+
+@keyframes scrollBounce {
+    0%, 100% {
+        transform: translate(-50%, 0);
+    }
+
+    50% {
+        transform: translate(-50%, 12px);
+    }
+}
+
+/* =========================================================
+   SECTIONS
+========================================================= */
+
+section {
+    padding: 100px 20px;
+    position: relative;
+}
+
+.section-title {
+    text-align: center;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    margin-bottom: 50px;
+
+    background: linear-gradient(90deg, #ff4f91, #9c59ff);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+/* Scroll reveal */
+
+.reveal {
+    opacity: 0;
+    transform: translateY(70px);
+    transition:
+        opacity 1s ease,
+        transform 1s cubic-bezier(.2,.8,.2,1);
+}
+
+.reveal.visible {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+/* =========================================================
+   MESSAGE
+========================================================= */
+
+.message-card {
+    max-width: 900px;
+    margin: auto;
+    padding: 50px;
+
+    position: relative;
+
+    background: rgba(255,255,255,.72);
+    backdrop-filter: blur(15px);
+
+    border-radius: 35px;
+
+    box-shadow:
+        0 25px 60px rgba(160, 80, 130, .15),
+        inset 0 0 30px rgba(255,255,255,.5);
+
+    overflow: hidden;
+}
+
+.message-card::before {
+    content: "";
+    position: absolute;
+    inset: -2px;
+
+    background:
+        linear-gradient(
+            120deg,
+            transparent,
+            rgba(255,90,160,.4),
+            transparent,
+            rgba(170,100,255,.4),
+            transparent
+        );
+
+    background-size: 300% 300%;
+    animation: borderMove 6s linear infinite;
+
+    z-index: -1;
+}
+
+@keyframes borderMove {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 300% 50%;
+    }
+}
+
+.message-card h2 {
+    font-size: 2rem;
+    margin-bottom: 25px;
+}
+
+.message-card p {
+    font-size: 1.08rem;
+    line-height: 1.9;
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   GALLERY
+========================================================= */
+
+.gallery {
+    max-width: 1100px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 25px;
+}
+
+.photo-card {
+    padding: 12px;
+    background: white;
+
+    border-radius: 8px;
+
+    box-shadow:
+        0 15px 30px rgba(80,40,70,.15);
+
+    transition:
+        transform .5s cubic-bezier(.2,.8,.2,1),
+        box-shadow .5s ease;
+
+    opacity: 0;
+    transform: translateY(70px) rotate(var(--rotation));
+}
+
+.gallery.visible .photo-card {
+    opacity: 1;
+    transform: translateY(0) rotate(var(--rotation));
+
+    transition:
+        opacity .8s ease,
+        transform .8s cubic-bezier(.2,.8,.2,1);
+}
+
+.photo-card:nth-child(1) {
+    --rotation: -3deg;
+    transition-delay: .1s;
+}
+
+.photo-card:nth-child(2) {
+    --rotation: 2deg;
+    transition-delay: .25s;
+}
+
+.photo-card:nth-child(3) {
+    --rotation: -2deg;
+    transition-delay: .4s;
+}
+
+.photo-card:nth-child(4) {
+    --rotation: 3deg;
+    transition-delay: .55s;
+}
+
+.photo-card:hover {
+    transform:
+        translateY(-15px)
+        rotate(0deg)
+        scale(1.07) !important;
+
+    box-shadow:
+        0 25px 50px rgba(200,70,140,.3);
+    z-index: 5;
+}
+
+.photo-card img {
+    width: 100%;
+    display: block;
+    aspect-ratio: 1 / 1;
+    object-fit: cover;
+    border-radius: 3px;
+}
+
+/* =========================================================
+   FUN CARDS
+========================================================= */
+
+.fun-grid {
+    max-width: 1000px;
+    margin: auto;
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 25px;
+}
+
+.fun-card {
+    padding: 35px 25px;
+    text-align: center;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.7);
+    backdrop-filter: blur(12px);
+
+    box-shadow:
+        0 15px 35px rgba(100,50,100,.12);
+
+    transition:
+        transform .4s ease,
+        box-shadow .4s ease;
+
+    opacity: 0;
+    transform: translateY(50px) scale(.9);
+}
+
+.fun-grid.visible .fun-card {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    transition:
+        opacity .7s ease,
+        transform .7s cubic-bezier(.2,.8,.2,1);
+}
+
+.fun-card:nth-child(1) {
+    transition-delay: .1s;
+}
+
+.fun-card:nth-child(2) {
+    transition-delay: .3s;
+}
+
+.fun-card:nth-child(3) {
+    transition-delay: .5s;
+}
+
+.fun-card:hover {
+    transform: translateY(-12px) scale(1.04) !important;
+
+    box-shadow:
+        0 25px 50px rgba(200,70,140,.2);
+}
+
+.fun-card .emoji {
+    display: block;
+    font-size: 55px;
+    margin-bottom: 20px;
+
+    animation: emojiBounce 2.5s infinite;
+}
+
+.fun-card:nth-child(2) .emoji {
+    animation-delay: .4s;
+}
+
+.fun-card:nth-child(3) .emoji {
+    animation-delay: .8s;
+}
+
+@keyframes emojiBounce {
+    0%, 100% {
+        transform: translateY(0) rotate(0);
+    }
+
+    50% {
+        transform: translateY(-10px) rotate(5deg);
+    }
+}
+
+.fun-card h3 {
+    margin-bottom: 12px;
+    font-size: 1.4rem;
+}
+
+/* =========================================================
+   FINAL SURPRISE
+========================================================= */
+
+.final-surprise {
+    text-align: center;
+    min-height: 80vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.final-content {
+    max-width: 850px;
+    width: 100%;
+}
+
+.final-content p {
+    font-size: 1.15rem;
+    line-height: 1.8;
+    margin-bottom: 30px;
+}
+
+.surprise-gift {
+    font-size: 130px;
+    display: inline-block;
+    cursor: pointer;
+    margin: 30px;
+
+    position: relative;
+
+    animation:
+        finalGiftFloat 2s ease-in-out infinite,
+        finalGiftGlow 2s ease-in-out infinite alternate;
+}
+
+.surprise-gift::before {
+    content: "";
+    position: absolute;
+    width: 180px;
+    height: 180px;
+
+    left: 50%;
+    top: 50%;
+
+    transform: translate(-50%, -50%);
+
+    background: rgba(255, 100, 170, .25);
+    filter: blur(35px);
+    border-radius: 50%;
+
+    z-index: -1;
+}
+
+@keyframes finalGiftFloat {
+    0%, 100% {
+        transform: translateY(0) rotate(-3deg);
+    }
+
+    50% {
+        transform: translateY(-25px) rotate(4deg);
+    }
+}
+
+@keyframes finalGiftGlow {
+    from {
+        filter: drop-shadow(0 5px 10px rgba(255,70,150,.25));
+    }
+
+    to {
+        filter: drop-shadow(0 10px 40px rgba(255,70,150,.7));
+    }
+}
+
+.surprise-gift:hover {
+    animation: giftShake .5s ease-in-out;
+}
+
+/* =========================================================
+   VIDEO
+========================================================= */
+
+.video-container {
+    display: none;
+
+    max-width: 850px;
+    margin: 40px auto;
+
+    padding: 12px;
+
+    border-radius: 30px;
+
+    background:
+        linear-gradient(
+            135deg,
+            #ff74aa,
+            #bd72ff,
+            #ff74aa
+        );
+
+    background-size: 200% 200%;
+
+    animation:
+        videoGradient 4s linear infinite,
+        videoAppear 1s ease;
+}
+
+@keyframes videoGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+
+    100% {
+        background-position: 200% 50%;
+    }
+}
+
+@keyframes videoAppear {
+    from {
+        opacity: 0;
+        transform: scale(.8) translateY(60px);
+    }
+
+    to {
+        opacity: 1;
+        transform: scale(1) translateY(0);
+    }
+}
+
+.video-container video {
+    width: 100%;
+    display: block;
+
+    border-radius: 20px;
+
+    background: black;
+
+    box-shadow:
+        0 25px 60px rgba(100,50,100,.3);
+}
+
+/* =========================================================
+   SURPRISE MESSAGE
+========================================================= */
+
+.surprise-message {
+    display: none;
+
+    max-width: 800px;
+    margin: 40px auto 0;
+
+    padding: 40px;
+
+    border-radius: 30px;
+
+    background: rgba(255,255,255,.8);
+    backdrop-filter: blur(15px);
+
+    box-shadow:
+        0 20px 50px rgba(100,50,100,.15);
+
+    animation: messagePop 1s cubic-bezier(.2,.8,.2,1);
+}
+
+@keyframes messagePop {
+    0% {
+        opacity: 0;
+        transform: scale(.7) rotate(-3deg);
+    }
+
+    70% {
+        transform: scale(1.04) rotate(1deg);
+    }
+
+    100% {
+        opacity: 1;
+        transform: scale(1) rotate(0);
+    }
+}
+
+.surprise-message h2 {
+    font-size: 2rem;
+    margin-bottom: 20px;
+}
+
+/* =========================================================
+   FOOTER
+========================================================= */
+
+footer {
+    padding: 70px 20px;
+    text-align: center;
+
+    background: rgba(255,255,255,.35);
+    backdrop-filter: blur(10px);
+
+    position: relative;
+}
+
+.footer-heart {
+    display: inline-block;
+    font-size: 40px;
+
+    animation: heartBeat 1.5s infinite;
+}
+
+@keyframes heartBeat {
+    0%, 100% {
+        transform: scale(1);
+    }
+
+    15% {
+        transform: scale(1.3);
+    }
+
+    30% {
+        transform: scale(1);
+    }
+
+    45% {
+        transform: scale(1.2);
+    }
+}
+
+footer p {
+    margin-top: 12px;
+    opacity: .8;
+}
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+.confetti {
+    position: fixed;
+    top: -50px;
+    z-index: 2000;
+
+    pointer-events: none;
+
+    animation:
+        confettiFall linear forwards,
+        confettiSpin 1s linear infinite;
+}
+
+@keyframes confettiFall {
+    0% {
+        top: -50px;
+        opacity: 1;
+    }
+
+    100% {
+        top: 110vh;
+        opacity: 0;
+    }
+}
+
+@keyframes confettiSpin {
+    from {
+        transform: rotate(0deg);
+    }
+
+    to {
+        transform: rotate(360deg);
+    }
+}
+
+/* =========================================================
+   SPARKLES
+========================================================= */
+
+.sparkle {
+    position: fixed;
+    pointer-events: none;
+    z-index: 90;
+
+    animation: sparkleAnimation 2s ease-out forwards;
+}
+
+@keyframes sparkleAnimation {
+    0% {
+        opacity: 0;
+        transform: scale(0);
+    }
+
+    40% {
+        opacity: 1;
+        transform: scale(1.2);
+    }
+
+    100% {
+        opacity: 0;
+        transform: scale(0);
+    }
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media (max-width: 800px) {
+
+    section {
+        padding: 75px 18px;
+    }
+
+    .gallery {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 15px;
+    }
+
+    .fun-grid {
+        grid-template-columns: 1fr;
+    }
+
+    .message-card {
+        padding: 30px 22px;
+    }
+
+    .hero h1 {
+        font-size: clamp(2.8rem, 13vw, 5rem);
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    .gift {
+        font-size: 85px;
+    }
+
+    .surprise-gift {
+        font-size: 100px;
+    }
+
+    .message-card h2 {
+        font-size: 1.6rem;
+    }
+
+    .opening-content p {
+        font-size: 1rem;
+    }
+
+    .hero-decoration {
+        font-size: 28px;
+    }
+}
+
+@media (max-width: 450px) {
+
+    .gallery {
+        grid-template-columns: 1fr 1fr;
+    }
+
+    .gallery .photo-card {
+        padding: 7px;
+    }
+
+    .main-button {
+        padding: 14px 22px;
+    }
+}
+
+/* =========================================================
+   ACCESSIBILITY
+========================================================= */
+
+@media (prefers-reduced-motion: reduce) {
+
+    *,
+    *::before,
+    *::after {
+        animation-duration: .01ms !important;
+        animation-iteration-count: 1 !important;
+        scroll-behavior: auto !important;
+        transition-duration: .01ms !important;
+    }
+}
+
+</style>
 </head>
 
 <body>
 
-    <!-- =========================
-         OPENING SCREEN
-    ========================= -->
+<!-- =====================================================
+     BACKGROUND MUSIC
+===================================================== -->
 
-    <div id="opening">
+<audio id="birthdayMusic" loop>
+    <source src="music.mp3" type="audio/mpeg">
+</audio>
 
-        <div class="opening-content">
 
-            <div class="gift" onclick="openSurprise()">
-                🎁
-            </div>
+<!-- =====================================================
+     OPENING SCREEN
+===================================================== -->
 
-            <h1>
-                Hey Neha! 👋
-            </h1>
+<div id="opening">
+
+    <div class="opening-content">
+
+        <div class="gift" onclick="openSurprise()">
+            🎁
+        </div>
+
+        <h1>Hey Neha! 👋</h1>
+
+        <p>
+            Someone has made a little surprise for you... 👀
+        </p>
+
+        <button class="main-button" onclick="openSurprise()">
+            ✨ Open Your Surprise ✨
+        </button>
+
+    </div>
+
+</div>
+
+
+<!-- =====================================================
+     HERO
+===================================================== -->
+
+<section class="hero">
+
+    <div class="hero-decoration decor1">💖</div>
+    <div class="hero-decoration decor2">✨</div>
+    <div class="hero-decoration decor3">🎈</div>
+    <div class="hero-decoration decor4">🌸</div>
+
+    <div class="hero-content">
+
+        <div style="font-size:60px; margin-bottom:20px;">
+            🎂
+        </div>
+
+        <h1>
+            Happy Birthday<br>
+            Neha! 🥳
+        </h1>
+
+        <p>
+            Today is all about celebrating you,
+            the wonderful person and friend you are. ❤️
+        </p>
+
+        <button class="main-button" onclick="scrollToMessage()">
+            💌 Read Your Birthday Message
+        </button>
+
+    </div>
+
+    <div class="scroll-indicator">
+        ↓
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     BIRTHDAY MESSAGE
+===================================================== -->
+
+<section id="message">
+
+    <div class="reveal">
+
+        <h2 class="section-title">
+            A Little Birthday Message 💌
+        </h2>
+
+        <div class="message-card">
+
+            <h2>
+                Happy Birthday, Neha! 🎉
+            </h2>
 
             <p>
-                Someone has made a little surprise for you... 👀
+                It has been really nice getting to know you,
+                and I’m genuinely glad that we’ve had the
+                opportunity to become friends. Our conversations
+                and the moments we’ve shared have made this
+                friendship really special and enjoyable. 😊
             </p>
 
-            <button onclick="openSurprise()">
-                ✨ Open Your Surprise ✨
-            </button>
+            <p>
+                I truly wish you happiness, success, good health,
+                and many wonderful experiences in the year ahead.
+                May you achieve everything you’re working towards
+                and always have plenty of reasons to smile.
+            </p>
+
+            <p>
+                Keep being the wonderful person you are, and I
+                hope we continue to share many more meaningful
+                conversations, good memories, and happy moments
+                together.
+            </p>
+
+            <p>
+                Wishing you a very Happy Birthday, Neha!
+                🎂🥳❤️
+            </p>
 
         </div>
 
     </div>
 
+</section>
 
-    <main>
 
-        <!-- =========================
-             HERO
-        ========================= -->
+<!-- =====================================================
+     MEMORIES / GALLERY
+===================================================== -->
 
-        <section class="hero">
+<section>
 
-            <h1>
-                Happy Birthday Neha 🎂
-            </h1>
+    <div class="reveal">
+
+        <h2 class="section-title">
+            Some Memories 📸❤️
+        </h2>
+
+        <div class="gallery reveal">
+
+            <div class="photo-card">
+                <img src="images/photo1.png" alt="Memory 1">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/photo2.jpg" alt="Memory 2">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/photo3.jpg" alt="Memory 3">
+            </div>
+
+            <div class="photo-card">
+                <img src="images/photo4.jpg" alt="Memory 4">
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FUN SECTION
+===================================================== -->
+
+<section>
+
+    <div class="reveal">
+
+        <h2 class="section-title">
+            Things That Make You... YOU 😂
+        </h2>
+
+        <div class="fun-grid reveal">
+
+            <div class="fun-card">
+
+                <span class="emoji">😂</span>
+
+                <h3>
+                    The Laugh
+                </h3>
+
+                <p>
+                    Somehow your laugh can make even
+                    the most boring conversation fun.
+                </p>
+
+            </div>
+
+
+            <div class="fun-card">
+
+                <span class="emoji">💬</span>
+
+                <h3>
+                    The Conversations
+                </h3>
+
+                <p>
+                    From serious discussions to completely
+                    random nonsense... somehow we cover it all.
+                </p>
+
+            </div>
+
+
+            <div class="fun-card">
+
+                <span class="emoji">✨</span>
+
+                <h3>
+                    The Personality
+                </h3>
+
+                <p>
+                    Simply being yourself is probably
+                    one of the best things about you.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- =====================================================
+     FINAL SURPRISE
+===================================================== -->
+
+<section class="final-surprise">
+
+    <div class="final-content reveal">
+
+        <h2 class="section-title">
+            One Last Surprise 😂🎁
+        </h2>
+
+        <p>
+            Okay, enough of the emotional stuff... 😂
+            <br>
+            I saved something funny for the end.
+            <br>
+            <strong>
+                Click the gift — you won't want to miss this!
+            </strong>
+        </p>
+
+        <div
+            id="giftBox"
+            class="surprise-gift"
+            onclick="showSurprise()"
+        >
+            🎁
+        </div>
+
+
+        <!-- VIDEO -->
+
+        <div
+            id="videoContainer"
+            class="video-container"
+        >
+
+            <video
+                id="birthdayVideo"
+                controls
+                playsinline
+            >
+
+                <source
+                    src="birthday-video.MOV"
+                    type="video/mp4"
+                >
+
+                Your browser does not support video playback.
+
+            </video>
+
+        </div>
+
+
+        <!-- FINAL MESSAGE -->
+
+        <div
+            id="surpriseMessage"
+            class="surprise-message"
+        >
+
+            <h2>
+                😂 Okay, I hope you enjoyed that!
+            </h2>
 
             <p>
-                Wishing you an amazing birthday filled with happiness,
-                laughter, good vibes and lots of unforgettable moments! 🥳
+                Consider this my final birthday surprise. 😜
             </p>
 
-            <button onclick="scrollToMessage()">
-                💌 There's a message for you
-            </button>
-
-        </section>
-
-
-        <!-- =========================
-             BIRTHDAY MESSAGE
-        ========================= -->
-
-        <section id="message">
-
-            <h2>
-                A Little Birthday Message 💖
-            </h2>
-
-            <div class="message-box">
-
-                <p>
-                    <strong>Happy Birthday, Neha! 🎉</strong>
-                </p>
-
-                <br>
-
-                <p>
-                    It has been really nice getting to know you, and I’m
-                    genuinely glad that we’ve had the opportunity to become
-                    friends. Our conversations and the moments we’ve shared
-                    have made this friendship really special and enjoyable. 😊
-                </p>
-
-                <br>
-
-                <p>
-                    I truly wish you happiness, success, good health, and
-                    many wonderful experiences in the year ahead. May you
-                    achieve everything you’re working towards and always
-                    have plenty of reasons to smile.
-                </p>
-
-                <br>
-
-                <p>
-                    Keep being the wonderful person you are, and I hope we
-                    continue to share many more meaningful conversations,
-                    good memories, and happy moments together.
-                </p>
-
-                <br>
-
-                <p>
-                    <strong>
-                        Wishing you a very Happy Birthday, Neha! 🎂🥳❤️
-                    </strong>
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             PHOTO GALLERY
-        ========================= -->
-
-        <section>
-
-            <h2>
-                Some Memories 📸
-            </h2>
-
-            <p class="section-subtitle">
-                A few moments that deserve a permanent place
-                on this little birthday page.
+            <p>
+                Wishing you an amazing year ahead,
+                filled with happiness, success and lots
+                of reasons to laugh!
             </p>
 
-            <div class="gallery">
-
-                <img src="images/photo1.png" alt="Memory 1">
-                <img src="images/photo2.jpg" alt="Memory 2">
-                <img src="images/photo3.jpg" alt="Memory 3">
-                <img src="images/photo4.jpg" alt="Memory 4">
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             FUN SECTION
-        ========================= -->
-
-        <section>
-
-            <h2>
-                Things That Make You... YOU 😂
-            </h2>
-
-            <p class="section-subtitle">
-                Because every good friend deserves a section dedicated
-                to their completely unique personality.
+            <p>
+                <strong>
+                    Happy Birthday once again, Neha! 🎂🥳❤️
+                </strong>
             </p>
 
-            <div class="cards">
+        </div>
 
-                <div class="card">
+    </div>
 
-                    <div class="emoji">
-                        😂
-                    </div>
-
-                    <h3>
-                        The Laugh
-                    </h3>
-
-                    <p>
-                        Somehow your laugh can turn even the most
-                        boring situation into a memorable one.
-                    </p>
-
-                </div>
+</section>
 
 
-                <div class="card">
+<!-- =====================================================
+     FOOTER
+===================================================== -->
 
-                    <div class="emoji">
-                        💬
-                    </div>
+<footer>
 
-                    <h3>
-                        The Conversations
-                    </h3>
+    <div class="footer-heart">
+        ❤️
+    </div>
 
-                    <p>
-                        From serious discussions to completely
-                        unexpected conversations, there is always
-                        something interesting to talk about.
-                    </p>
+    <p>
+        Made with ❤️ for Neha
+    </p>
 
-                </div>
-
-
-                <div class="card">
-
-                    <div class="emoji">
-                        ✨
-                    </div>
-
-                    <h3>
-                        The Personality
-                    </h3>
-
-                    <p>
-                        Your unique personality is what makes getting
-                        to know you such a genuinely enjoyable experience.
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             FINAL FUNNY VIDEO
-        ========================= -->
-
-        <section class="surprise-section">
-
-            <h2>
-                One Last Surprise 😂🎁
-            </h2>
-
-            <p class="section-subtitle">
-                Okay, enough of the emotional stuff... 😂<br>
-                I saved something funny for the end.<br>
-                Click the gift — you won't want to miss this!
-            </p>
-
-            <div
-                class="big-gift"
-                onclick="showSurprise()"
-                id="giftBox"
-                title="Click me!"
-            >
-                🎁
-            </div>
-
-
-            <div id="videoContainer">
-
-                <video
-                    id="birthdayVideo"
-                    controls
-                    playsinline
-                    preload="metadata"
-                >
-                    <source
-                        src="birthday-video.MOV"
-                        type="video/mp4"
-                    >
-
-                    Your browser does not support the video.
-
-                </video>
-
-
-                <div id="surpriseMessage">
-
-                    <p>
-                        😂 Okay, I hope you enjoyed that!
-                    </p>
-
-                    <br>
-
-                    <p>
-                        Consider this my final birthday surprise. 😜
-                    </p>
-
-                    <br>
-
-                    <p>
-                        Wishing you an amazing year ahead,
-                        filled with happiness, success and lots of
-                        reasons to laugh!
-                    </p>
-
-                    <br>
-
-                    <p>
-                        <strong>
-                            Happy Birthday once again, Neha! 🎂🥳❤️
-                        </strong>
-                    </p>
-
-                </div>
-
-            </div>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         BACKGROUND MUSIC
-    ========================= -->
-
-    <audio id="birthdayMusic" loop preload="auto">
-        <source src="music.mp3" type="audio/mpeg">
-    </audio>
-
-
-    <!-- =========================
-         FOOTER
-    ========================= -->
-
-    <footer>
-
-        Made with ❤️ for <strong>Neha</strong>
-
-        <br><br>
-
+    <p>
         Because every great friendship deserves
         a little celebration. 🎂
+    </p>
 
-    </footer>
-
-
-    <script>
-
-        /* =========================
-           ELEMENTS
-        ========================= */
-
-        const music = document.getElementById("birthdayMusic");
-        const video = document.getElementById("birthdayVideo");
+</footer>
 
 
-        /* =========================
-           OPEN SURPRISE
-        ========================= */
+<script>
 
-        function openSurprise() {
+/* =========================================================
+   ELEMENTS
+========================================================= */
 
-            document
-                .getElementById("opening")
-                .classList.add("hide");
+const music = document.getElementById("birthdayMusic");
+const video = document.getElementById("birthdayVideo");
 
-            // Start background music only after the user clicks.
-            music.volume = 1.0;
-
-            music.play().catch(() => {
-                console.log("Browser blocked music playback.");
-            });
-
-            createConfetti();
-
-            startFloatingEmojis();
-        }
+let floatingStarted = false;
 
 
-        /* =========================
-           SCROLL TO MESSAGE
-        ========================= */
+/* =========================================================
+   OPEN SURPRISE
+========================================================= */
 
-        function scrollToMessage() {
+function openSurprise() {
 
-            document
-                .getElementById("message")
-                .scrollIntoView({
-                    behavior: "smooth",
-                    block: "start"
-                });
+    document
+        .getElementById("opening")
+        .classList.add("hide");
 
-        }
+    music.volume = 1.0;
 
+    music.play().catch(() => {
+        console.log("Browser blocked music playback.");
+    });
 
-        /* =========================
-           SHOW FINAL VIDEO
-        ========================= */
+    createConfetti();
+    createSparkles();
 
-        function showSurprise() {
-
-            const videoContainer =
-                document.getElementById("videoContainer");
-
-            const giftBox =
-                document.getElementById("giftBox");
-
-            const surpriseMessage =
-                document.getElementById("surpriseMessage");
-
-            videoContainer.style.display = "block";
-
-            giftBox.style.display = "none";
-
-            surpriseMessage.style.display = "none";
-
-            createConfetti();
-
-            videoContainer.scrollIntoView({
-                behavior: "smooth",
-                block: "center"
-            });
-
-            /*
-             * The gift was clicked by the user,
-             * so the browser should allow video playback.
-             */
-            video.play().catch(() => {
-                console.log("Video playback was blocked. Press play.");
-            });
-        }
+    if (!floatingStarted) {
+        startFloatingEmojis();
+        floatingStarted = true;
+    }
+}
 
 
-        /* =========================
-           VIDEO + MUSIC
-        ========================= */
+/* =========================================================
+   SCROLL TO MESSAGE
+========================================================= */
 
-        /*
-         * Video starts:
-         * Stop background music.
-         */
-        video.addEventListener("play", function () {
+function scrollToMessage() {
 
-            music.pause();
+    document
+        .getElementById("message")
+        .scrollIntoView({
+            behavior: "smooth",
+            block: "start"
+        });
+}
+
+
+/* =========================================================
+   FINAL SURPRISE
+========================================================= */
+
+function showSurprise() {
+
+    const videoContainer =
+        document.getElementById("videoContainer");
+
+    const giftBox =
+        document.getElementById("giftBox");
+
+    const surpriseMessage =
+        document.getElementById("surpriseMessage");
+
+
+    giftBox.style.transform = "scale(0) rotate(20deg)";
+    giftBox.style.opacity = "0";
+
+    setTimeout(() => {
+
+        giftBox.style.display = "none";
+
+        videoContainer.style.display = "block";
+
+        surpriseMessage.style.display = "none";
+
+    }, 350);
+
+
+    createConfetti();
+    createSparkles();
+
+
+    setTimeout(() => {
+
+        videoContainer.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+        video.play().catch(() => {
+
+            console.log(
+                "Video playback was blocked. Press play."
+            );
 
         });
 
-
-        /*
-         * Video is manually paused:
-         * Resume background music.
-         */
-        video.addEventListener("pause", function () {
-
-            if (!video.ended) {
-
-                music.play().catch(() => {
-                    console.log("Music could not resume automatically.");
-                });
-
-            }
-
-        });
+    }, 500);
+}
 
 
-        /*
-         * Video finishes:
-         * Resume background music,
-         * show final message,
-         * create another confetti effect.
-         */
-        video.addEventListener("ended", function () {
+/* =========================================================
+   VIDEO + MUSIC CONTROL
+========================================================= */
 
-            music.play().catch(() => {
-                console.log("Music could not resume automatically.");
-            });
+video.addEventListener("play", function () {
 
-            document
-                .getElementById("surpriseMessage")
-                .style.display = "block";
+    music.pause();
 
-            createConfetti();
+});
 
-            document
-                .getElementById("surpriseMessage")
-                .scrollIntoView({
-                    behavior: "smooth",
-                    block: "center"
-                });
+
+video.addEventListener("pause", function () {
+
+    if (!video.ended) {
+
+        music.play().catch(() => {
+
+            console.log(
+                "Music could not resume automatically."
+            );
 
         });
 
+    }
 
-        /* =========================
-           CONFETTI
-        ========================= */
+});
 
-        function createConfetti() {
 
-            const emojis = [
-                "🎉",
-                "🎊",
-                "✨",
-                "💖",
-                "🥳",
-                "🎂",
-                "❤️"
+video.addEventListener("ended", function () {
+
+    music.play().catch(() => {
+
+        console.log(
+            "Music could not resume automatically."
+        );
+
+    });
+
+
+    const message =
+        document.getElementById("surpriseMessage");
+
+    message.style.display = "block";
+
+    createConfetti();
+    createConfetti();
+    createSparkles();
+
+
+    setTimeout(() => {
+
+        message.scrollIntoView({
+            behavior: "smooth",
+            block: "center"
+        });
+
+    }, 300);
+
+});
+
+
+/* =========================================================
+   CONFETTI
+========================================================= */
+
+function createConfetti() {
+
+    const emojis = [
+        "🎉",
+        "🎊",
+        "✨",
+        "💖",
+        "🥳",
+        "🎂",
+        "❤️",
+        "🌸",
+        "💕",
+        "⭐"
+    ];
+
+
+    for (let i = 0; i < 70; i++) {
+
+        const confetti =
+            document.createElement("div");
+
+        confetti.className = "confetti";
+
+        confetti.textContent =
+            emojis[
+                Math.floor(
+                    Math.random() * emojis.length
+                )
             ];
 
-            for (let i = 0; i < 60; i++) {
 
-                const confetti =
-                    document.createElement("div");
-
-                confetti.className = "confetti";
-
-                confetti.textContent =
-                    emojis[
-                        Math.floor(
-                            Math.random() * emojis.length
-                        )
-                    ];
-
-                confetti.style.left =
-                    Math.random() * 100 + "vw";
-
-                confetti.style.fontSize =
-                    (12 + Math.random() * 20) + "px";
-
-                confetti.style.animationDuration =
-                    (2 + Math.random() * 3) + "s";
-
-                confetti.style.animationDelay =
-                    Math.random() * 1.5 + "s";
-
-                document.body.appendChild(confetti);
-
-                setTimeout(() => {
-                    confetti.remove();
-                }, 5000);
-
-            }
-
-        }
+        confetti.style.left =
+            Math.random() * 100 + "vw";
 
 
-        /* =========================
-           FLOATING EMOJIS
-        ========================= */
+        confetti.style.fontSize =
+            (12 + Math.random() * 22) + "px";
 
-        function startFloatingEmojis() {
 
-            const emojis = [
-                "💖",
-                "✨",
-                "🎈",
-                "🥳",
-                "💕",
-                "🎂",
-                "🌸"
+        confetti.style.animationDuration =
+            (2 + Math.random() * 4) + "s";
+
+
+        confetti.style.animationDelay =
+            Math.random() * 1.5 + "s";
+
+
+        document.body.appendChild(confetti);
+
+
+        setTimeout(() => {
+
+            confetti.remove();
+
+        }, 6500);
+
+    }
+
+}
+
+
+/* =========================================================
+   FLOATING EMOJIS
+========================================================= */
+
+function startFloatingEmojis() {
+
+    const emojis = [
+        "💖",
+        "✨",
+        "🎈",
+        "🥳",
+        "💕",
+        "🎂",
+        "🌸",
+        "💗",
+        "⭐"
+    ];
+
+
+    setInterval(() => {
+
+        const floating =
+            document.createElement("div");
+
+        floating.className = "floating";
+
+        floating.textContent =
+            emojis[
+                Math.floor(
+                    Math.random() * emojis.length
+                )
             ];
 
-            setInterval(() => {
 
-                const floating =
-                    document.createElement("div");
+        floating.style.left =
+            Math.random() * 100 + "vw";
 
-                floating.className = "floating";
 
-                floating.textContent =
-                    emojis[
-                        Math.floor(
-                            Math.random() * emojis.length
-                        )
-                    ];
+        floating.style.fontSize =
+            (18 + Math.random() * 25) + "px";
 
-                floating.style.left =
-                    Math.random() * 100 + "vw";
 
-                floating.style.animationDuration =
-                    (5 + Math.random() * 5) + "s";
+        floating.style.animationDuration =
+            (5 + Math.random() * 6) + "s";
 
-                document.body.appendChild(floating);
 
-                setTimeout(() => {
-                    floating.remove();
-                }, 10000);
+        document.body.appendChild(floating);
 
-            }, 1200);
+
+        setTimeout(() => {
+
+            floating.remove();
+
+        }, 12000);
+
+    }, 1000);
+
+}
+
+
+/* =========================================================
+   SPARKLES
+========================================================= */
+
+function createSparkles() {
+
+    setInterval(() => {
+
+        if (Math.random() > .55) {
+
+            const sparkle =
+                document.createElement("div");
+
+            sparkle.className = "sparkle";
+
+            sparkle.textContent = "✨";
+
+
+            sparkle.style.left =
+                Math.random() * 100 + "vw";
+
+
+            sparkle.style.top =
+                Math.random() * 100 + "vh";
+
+
+            sparkle.style.fontSize =
+                (10 + Math.random() * 20) + "px";
+
+
+            document.body.appendChild(sparkle);
+
+
+            setTimeout(() => {
+
+                sparkle.remove();
+
+            }, 2000);
 
         }
 
-    </script>
+    }, 600);
+
+}
+
+
+/* =========================================================
+   SCROLL REVEAL
+========================================================= */
+
+const observer =
+    new IntersectionObserver(
+        (entries) => {
+
+            entries.forEach(entry => {
+
+                if (entry.isIntersecting) {
+
+                    entry.target.classList.add("visible");
+
+                }
+
+            });
+
+        },
+        {
+            threshold: .15
+        }
+    );
+
+
+document
+    .querySelectorAll(".reveal")
+    .forEach(element => {
+
+        observer.observe(element);
+
+    });
+
+
+/* =========================================================
+   RANDOM MINI SPARKLES AROUND MOUSE
+========================================================= */
+
+let lastSparkle = 0;
+
+document.addEventListener("mousemove", function(e) {
+
+    const now = Date.now();
+
+    if (now - lastSparkle < 100) {
+        return;
+    }
+
+    lastSparkle = now;
+
+
+    if (Math.random() > .75) {
+
+        const sparkle =
+            document.createElement("div");
+
+        sparkle.className = "sparkle";
+
+        sparkle.textContent = "✦";
+
+        sparkle.style.left =
+            e.clientX + "px";
+
+        sparkle.style.top =
+            e.clientY + "px";
+
+
+        document.body.appendChild(sparkle);
+
+
+        setTimeout(() => {
+
+            sparkle.remove();
+
+        }, 2000);
+
+    }
+
+});
+
+
+/* =========================================================
+   EXTRA CONFETTI WHEN CLICKING BUTTONS
+========================================================= */
+
+document
+    .querySelectorAll(".main-button")
+    .forEach(button => {
+
+        button.addEventListener("click", () => {
+
+            createSparkles();
+
+        });
+
+    });
+
+</script>
 
 </body>
 </html>
