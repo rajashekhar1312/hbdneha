@@ -7,6 +7,7 @@
     <title>Happy Birthday Neha 🎂</title>
 
     <style>
+
         * {
             margin: 0;
             padding: 0;
@@ -20,7 +21,10 @@
             overflow-x: hidden;
         }
 
-        /* Opening Screen */
+        /* =========================
+           OPENING SCREEN
+        ========================= */
+
         #opening {
             position: fixed;
             inset: 0;
@@ -60,7 +64,10 @@
             margin-bottom: 25px;
         }
 
-        /* Buttons */
+        /* =========================
+           BUTTONS
+        ========================= */
+
         button {
             border: none;
             padding: 14px 28px;
@@ -78,10 +85,9 @@
             transform: translateY(-3px) scale(1.03);
         }
 
-        /* Main Content */
-        main {
-            min-height: 100vh;
-        }
+        /* =========================
+           HERO
+        ========================= */
 
         .hero {
             min-height: 100vh;
@@ -107,7 +113,10 @@
             margin-bottom: 30px;
         }
 
-        /* Sections */
+        /* =========================
+           SECTIONS
+        ========================= */
+
         section {
             padding: 80px 20px;
             text-align: center;
@@ -126,7 +135,10 @@
             color: #666;
         }
 
-        /* Message */
+        /* =========================
+           MESSAGE
+        ========================= */
+
         .message-box {
             max-width: 800px;
             margin: auto;
@@ -138,7 +150,10 @@
             font-size: 1.1rem;
         }
 
-        /* Gallery */
+        /* =========================
+           PHOTO GALLERY
+        ========================= */
+
         .gallery {
             max-width: 1100px;
             margin: 40px auto 0;
@@ -160,7 +175,10 @@
             transform: scale(1.05) rotate(1deg);
         }
 
-        /* Fun Cards */
+        /* =========================
+           FUN CARDS
+        ========================= */
+
         .cards {
             max-width: 1000px;
             margin: 40px auto;
@@ -196,7 +214,10 @@
             line-height: 1.6;
         }
 
-        /* Surprise */
+        /* =========================
+           SURPRISE
+        ========================= */
+
         .surprise-section {
             background: rgba(255, 255, 255, 0.35);
         }
@@ -226,21 +247,10 @@
             animation: fadeIn 1s ease;
         }
 
-        /* Music Button */
-        .music-btn {
-            position: fixed;
-            right: 20px;
-            bottom: 20px;
-            z-index: 1000;
-            background: white;
-            width: 55px;
-            height: 55px;
-            border-radius: 50%;
-            padding: 0;
-            font-size: 22px;
-        }
+        /* =========================
+           FLOATING EMOJIS
+        ========================= */
 
-        /* Floating Emojis */
         .floating {
             position: fixed;
             bottom: -50px;
@@ -250,7 +260,10 @@
             z-index: 0;
         }
 
-        /* Footer */
+        /* =========================
+           FOOTER
+        ========================= */
+
         footer {
             padding: 30px 20px;
             text-align: center;
@@ -262,7 +275,10 @@
             color: #e75480;
         }
 
-        /* Confetti */
+        /* =========================
+           CONFETTI
+        ========================= */
+
         .confetti {
             position: fixed;
             width: 10px;
@@ -272,8 +288,12 @@
             animation: confettiFall 3s linear forwards;
         }
 
-        /* Animations */
+        /* =========================
+           ANIMATIONS
+        ========================= */
+
         @keyframes bounce {
+
             0%, 100% {
                 transform: translateY(0);
             }
@@ -281,9 +301,11 @@
             50% {
                 transform: translateY(-20px);
             }
+
         }
 
         @keyframes fadeIn {
+
             from {
                 opacity: 0;
                 transform: translateY(20px);
@@ -293,9 +315,11 @@
                 opacity: 1;
                 transform: translateY(0);
             }
+
         }
 
         @keyframes floatUp {
+
             from {
                 transform: translateY(0) rotate(0deg);
                 opacity: 0;
@@ -309,9 +333,11 @@
                 transform: translateY(-110vh) rotate(360deg);
                 opacity: 0;
             }
+
         }
 
         @keyframes confettiFall {
+
             from {
                 transform: translateY(0) rotate(0deg);
                 opacity: 1;
@@ -321,9 +347,13 @@
                 transform: translateY(110vh) rotate(720deg);
                 opacity: 0;
             }
+
         }
 
-        /* Mobile */
+        /* =========================
+           MOBILE
+        ========================= */
+
         @media (max-width: 600px) {
 
             .opening-content h1 {
@@ -354,20 +384,32 @@
             .big-gift {
                 font-size: 90px;
             }
+
         }
+
     </style>
+
 </head>
+
 
 <body>
 
-    <!-- Opening Screen -->
+
+    <!-- =========================
+         OPENING SCREEN
+    ========================= -->
+
     <div id="opening">
 
         <div class="opening-content">
 
-            <div class="gift" onclick="openSurprise()">🎁</div>
+            <div class="gift" onclick="openSurprise()">
+                🎁
+            </div>
 
-            <h1>Hey Neha! 👋</h1>
+            <h1>
+                Hey Neha! 👋
+            </h1>
 
             <p>
                 Someone has made a little surprise for you... 👀
@@ -382,13 +424,20 @@
     </div>
 
 
-    <!-- Main Website -->
+    <!-- =========================
+         MAIN WEBSITE
+    ========================= -->
+
     <main>
 
-        <!-- Hero -->
+
+        <!-- HERO -->
+
         <section class="hero">
 
-            <h1>Happy Birthday Neha 🎂</h1>
+            <h1>
+                Happy Birthday Neha 🎂
+            </h1>
 
             <p>
                 Wishing you an amazing birthday filled with happiness,
@@ -402,10 +451,15 @@
         </section>
 
 
-        <!-- Birthday Message -->
+        <!-- =========================
+             BIRTHDAY MESSAGE
+        ========================= -->
+
         <section id="message">
 
-            <h2>A Little Birthday Message 💖</h2>
+            <h2>
+                A Little Birthday Message 💖
+            </h2>
 
             <div class="message-box">
 
@@ -449,10 +503,15 @@
         </section>
 
 
-        <!-- Memories -->
+        <!-- =========================
+             MEMORIES
+        ========================= -->
+
         <section>
 
-            <h2>Some Memories 📸</h2>
+            <h2>
+                Some Memories 📸
+            </h2>
 
             <p class="section-subtitle">
                 A few moments that deserve a permanent place
@@ -474,23 +533,34 @@
         </section>
 
 
-        <!-- Fun Section -->
+        <!-- =========================
+             FUN SECTION
+        ========================= -->
+
         <section>
 
-            <h2>Things That Make You... YOU 😂</h2>
+            <h2>
+                Things That Make You... YOU 😂
+            </h2>
 
             <p class="section-subtitle">
                 Because every good friend deserves a section dedicated
                 to their completely unique personality.
             </p>
 
+
             <div class="cards">
+
 
                 <div class="card">
 
-                    <div class="emoji">😂</div>
+                    <div class="emoji">
+                        😂
+                    </div>
 
-                    <h3>The Laugh</h3>
+                    <h3>
+                        The Laugh
+                    </h3>
 
                     <p>
                         Somehow your laugh can turn even the most
@@ -502,9 +572,13 @@
 
                 <div class="card">
 
-                    <div class="emoji">💬</div>
+                    <div class="emoji">
+                        💬
+                    </div>
 
-                    <h3>The Conversations</h3>
+                    <h3>
+                        The Conversations
+                    </h3>
 
                     <p>
                         From serious discussions to completely
@@ -517,9 +591,13 @@
 
                 <div class="card">
 
-                    <div class="emoji">🤪</div>
+                    <div class="emoji">
+                        🤪
+                    </div>
 
-                    <h3>The Madness</h3>
+                    <h3>
+                        The Madness
+                    </h3>
 
                     <p>
                         Normal is overrated anyway. 😂
@@ -528,24 +606,34 @@
 
                 </div>
 
+
             </div>
 
         </section>
 
 
-        <!-- Surprise Gift -->
+        <!-- =========================
+             SURPRISE GIFT
+        ========================= -->
+
         <section class="surprise-section">
 
-            <h2>One Last Surprise 🎁</h2>
+            <h2>
+                One Last Surprise 🎁
+            </h2>
 
             <p class="section-subtitle">
                 There's something waiting for you.
                 Go on... click the gift!
             </p>
 
-            <div class="big-gift" onclick="showSurprise()">
+            <div
+                class="big-gift"
+                onclick="showSurprise()"
+            >
                 🎁
             </div>
+
 
             <div id="surpriseMessage">
 
@@ -570,29 +658,37 @@
                 <br>
 
                 <p>
-                    <strong>Happy Birthday once again, Neha! ❤️</strong>
+                    <strong>
+                        Happy Birthday once again, Neha! ❤️
+                    </strong>
                 </p>
 
             </div>
 
         </section>
 
+
     </main>
 
 
-    <!-- Music -->
+    <!-- =========================
+         BACKGROUND MUSIC
+    ========================= -->
+
     <audio id="birthdayMusic" loop>
 
-        <source src="music.mp3" type="audio/mpeg">
+        <source
+            src="music.mp3"
+            type="audio/mpeg"
+        >
 
     </audio>
 
-    <button class="music-btn" onclick="toggleMusic()" id="musicButton">
-        🎵
-    </button>
 
+    <!-- =========================
+         FOOTER
+    ========================= -->
 
-    <!-- Footer -->
     <footer>
 
         Made with ❤️ for <strong>Neha</strong>
@@ -607,7 +703,10 @@
 
     <script>
 
-        /* Opening Screen */
+
+        /* =========================
+           OPEN SURPRISE + MUSIC
+        ========================= */
 
         function openSurprise() {
 
@@ -615,12 +714,35 @@
                 .getElementById("opening")
                 .classList.add("hide");
 
+
+            const music =
+                document.getElementById("birthdayMusic");
+
+
+            /*
+             * Start music after the user's click.
+             * This avoids browser autoplay restrictions.
+             */
+
+            music.volume = 1.0;
+
+            music.play().catch(() => {
+
+                console.log(
+                    "Browser blocked audio playback."
+                );
+
+            });
+
+
             createConfetti();
 
         }
 
 
-        /* Scroll to Message */
+        /* =========================
+           SCROLL TO MESSAGE
+        ========================= */
 
         function scrollToMessage() {
 
@@ -633,16 +755,21 @@
         }
 
 
-        /* Surprise Gift */
+        /* =========================
+           SURPRISE GIFT
+        ========================= */
 
         function showSurprise() {
 
             const message =
                 document.getElementById("surpriseMessage");
 
+
             message.style.display = "block";
 
+
             createConfetti();
+
 
             setTimeout(() => {
 
@@ -656,50 +783,9 @@
         }
 
 
-        /* Music */
-
-        let musicPlaying = false;
-
-        function toggleMusic() {
-
-            const music =
-                document.getElementById("birthdayMusic");
-
-            const button =
-                document.getElementById("musicButton");
-
-            if (musicPlaying) {
-
-                music.pause();
-
-                button.innerHTML = "🎵";
-
-                musicPlaying = false;
-
-            } else {
-
-                music.play()
-                    .then(() => {
-
-                        button.innerHTML = "🔊";
-
-                        musicPlaying = true;
-
-                    })
-                    .catch(() => {
-
-                        alert(
-                            "Please interact with the page first to play the music."
-                        );
-
-                    });
-
-            }
-
-        }
-
-
-        /* Confetti */
+        /* =========================
+           CONFETTI
+        ========================= */
 
         function createConfetti() {
 
@@ -713,30 +799,42 @@
                 "❤️"
             ];
 
+
             for (let i = 0; i < 60; i++) {
 
                 const confetti =
                     document.createElement("div");
 
-                confetti.className = "confetti";
+
+                confetti.className =
+                    "confetti";
+
 
                 confetti.innerHTML =
                     emojis[
                         Math.floor(
-                            Math.random() * emojis.length
+                            Math.random() *
+                            emojis.length
                         )
                     ];
+
 
                 confetti.style.left =
                     Math.random() * 100 + "vw";
 
+
                 confetti.style.fontSize =
                     (Math.random() * 15 + 10) + "px";
+
 
                 confetti.style.animationDuration =
                     (Math.random() * 2 + 2) + "s";
 
-                document.body.appendChild(confetti);
+
+                document.body.appendChild(
+                    confetti
+                );
+
 
                 setTimeout(() => {
 
@@ -749,7 +847,9 @@
         }
 
 
-        /* Floating Emojis */
+        /* =========================
+           FLOATING EMOJIS
+        ========================= */
 
         function createFloatingEmoji() {
 
@@ -762,25 +862,36 @@
                 "⭐"
             ];
 
+
             const emoji =
                 document.createElement("div");
 
-            emoji.className = "floating";
+
+            emoji.className =
+                "floating";
+
 
             emoji.innerHTML =
                 emojis[
                     Math.floor(
-                        Math.random() * emojis.length
+                        Math.random() *
+                        emojis.length
                     )
                 ];
+
 
             emoji.style.left =
                 Math.random() * 100 + "vw";
 
+
             emoji.style.animationDuration =
                 (Math.random() * 6 + 6) + "s";
 
-            document.body.appendChild(emoji);
+
+            document.body.appendChild(
+                emoji
+            );
+
 
             setTimeout(() => {
 
@@ -791,9 +902,14 @@
         }
 
 
-        setInterval(createFloatingEmoji, 1200);
+        setInterval(
+            createFloatingEmoji,
+            1200
+        );
+
 
     </script>
+
 
 </body>
 </html>
