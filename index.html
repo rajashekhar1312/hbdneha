@@ -1,0 +1,799 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Happy Birthday Neha 🎂</title>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: "Segoe UI", Arial, sans-serif;
+            background: linear-gradient(135deg, #ffe4ec, #e8d9ff, #dff6ff);
+            color: #333;
+            overflow-x: hidden;
+        }
+
+        /* Opening Screen */
+        #opening {
+            position: fixed;
+            inset: 0;
+            background: linear-gradient(135deg, #ff9a9e, #fad0c4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            z-index: 9999;
+            transition: opacity 1s ease, visibility 1s ease;
+        }
+
+        #opening.hide {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .opening-content {
+            padding: 30px;
+        }
+
+        .gift {
+            font-size: 100px;
+            animation: bounce 1.5s infinite;
+            cursor: pointer;
+        }
+
+        .opening-content h1 {
+            font-size: 3rem;
+            color: white;
+            margin: 20px 0 10px;
+        }
+
+        .opening-content p {
+            color: white;
+            font-size: 1.2rem;
+            margin-bottom: 25px;
+        }
+
+        /* Buttons */
+        button {
+            border: none;
+            padding: 14px 28px;
+            border-radius: 30px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            background: white;
+            color: #e75480;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+            transition: 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px) scale(1.03);
+        }
+
+        /* Main Content */
+        main {
+            min-height: 100vh;
+        }
+
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        .hero h1 {
+            font-size: 4rem;
+            color: #e75480;
+            margin-bottom: 20px;
+            animation: fadeIn 1.5s ease;
+        }
+
+        .hero p {
+            max-width: 750px;
+            font-size: 1.25rem;
+            line-height: 1.8;
+            margin-bottom: 30px;
+        }
+
+        /* Sections */
+        section {
+            padding: 80px 20px;
+            text-align: center;
+        }
+
+        section h2 {
+            font-size: 2.5rem;
+            color: #d94f7d;
+            margin-bottom: 20px;
+        }
+
+        .section-subtitle {
+            max-width: 700px;
+            margin: 0 auto 40px;
+            line-height: 1.7;
+            color: #666;
+        }
+
+        /* Message */
+        .message-box {
+            max-width: 800px;
+            margin: auto;
+            background: rgba(255, 255, 255, 0.75);
+            padding: 40px;
+            border-radius: 25px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+            line-height: 1.9;
+            font-size: 1.1rem;
+        }
+
+        /* Gallery */
+        .gallery {
+            max-width: 1100px;
+            margin: 40px auto 0;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery img {
+            width: 100%;
+            height: 280px;
+            object-fit: cover;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+            transition: 0.4s;
+        }
+
+        .gallery img:hover {
+            transform: scale(1.05) rotate(1deg);
+        }
+
+        /* Fun Cards */
+        .cards {
+            max-width: 1000px;
+            margin: 40px auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            padding: 30px;
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.1);
+            transition: 0.3s;
+        }
+
+        .card:hover {
+            transform: translateY(-8px);
+        }
+
+        .card .emoji {
+            font-size: 50px;
+            margin-bottom: 15px;
+        }
+
+        .card h3 {
+            color: #d94f7d;
+            margin-bottom: 10px;
+        }
+
+        .card p {
+            color: #666;
+            line-height: 1.6;
+        }
+
+        /* Surprise */
+        .surprise-section {
+            background: rgba(255, 255, 255, 0.35);
+        }
+
+        .big-gift {
+            font-size: 120px;
+            cursor: pointer;
+            display: inline-block;
+            animation: bounce 2s infinite;
+            transition: 0.3s;
+        }
+
+        .big-gift:hover {
+            transform: scale(1.1);
+        }
+
+        #surpriseMessage {
+            display: none;
+            max-width: 700px;
+            margin: 30px auto 0;
+            padding: 30px;
+            background: white;
+            border-radius: 25px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            font-size: 1.2rem;
+            line-height: 1.8;
+            animation: fadeIn 1s ease;
+        }
+
+        /* Music Button */
+        .music-btn {
+            position: fixed;
+            right: 20px;
+            bottom: 20px;
+            z-index: 1000;
+            background: white;
+            width: 55px;
+            height: 55px;
+            border-radius: 50%;
+            padding: 0;
+            font-size: 22px;
+        }
+
+        /* Floating Emojis */
+        .floating {
+            position: fixed;
+            bottom: -50px;
+            font-size: 25px;
+            animation: floatUp linear infinite;
+            pointer-events: none;
+            z-index: 0;
+        }
+
+        /* Footer */
+        footer {
+            padding: 30px 20px;
+            text-align: center;
+            background: rgba(255, 255, 255, 0.5);
+            color: #777;
+        }
+
+        footer strong {
+            color: #e75480;
+        }
+
+        /* Confetti */
+        .confetti {
+            position: fixed;
+            width: 10px;
+            height: 10px;
+            top: -10px;
+            z-index: 9998;
+            animation: confettiFall 3s linear forwards;
+        }
+
+        /* Animations */
+        @keyframes bounce {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-20px);
+            }
+        }
+
+        @keyframes fadeIn {
+            from {
+                opacity: 0;
+                transform: translateY(20px);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes floatUp {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 0;
+            }
+
+            10% {
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(-110vh) rotate(360deg);
+                opacity: 0;
+            }
+        }
+
+        @keyframes confettiFall {
+            from {
+                transform: translateY(0) rotate(0deg);
+                opacity: 1;
+            }
+
+            to {
+                transform: translateY(110vh) rotate(720deg);
+                opacity: 0;
+            }
+        }
+
+        /* Mobile */
+        @media (max-width: 600px) {
+
+            .opening-content h1 {
+                font-size: 2.2rem;
+            }
+
+            .hero h1 {
+                font-size: 2.7rem;
+            }
+
+            .hero p {
+                font-size: 1rem;
+            }
+
+            section h2 {
+                font-size: 2rem;
+            }
+
+            .message-box {
+                padding: 25px;
+                font-size: 1rem;
+            }
+
+            .gallery img {
+                height: 230px;
+            }
+
+            .big-gift {
+                font-size: 90px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Opening Screen -->
+    <div id="opening">
+
+        <div class="opening-content">
+
+            <div class="gift" onclick="openSurprise()">🎁</div>
+
+            <h1>Hey Neha! 👋</h1>
+
+            <p>
+                Someone has made a little surprise for you... 👀
+            </p>
+
+            <button onclick="openSurprise()">
+                ✨ Open Your Surprise ✨
+            </button>
+
+        </div>
+
+    </div>
+
+
+    <!-- Main Website -->
+    <main>
+
+        <!-- Hero -->
+        <section class="hero">
+
+            <h1>Happy Birthday Neha 🎂</h1>
+
+            <p>
+                Wishing you an amazing birthday filled with happiness,
+                laughter, good vibes and lots of unforgettable moments! 🥳
+            </p>
+
+            <button onclick="scrollToMessage()">
+                💌 There's a message for you
+            </button>
+
+        </section>
+
+
+        <!-- Birthday Message -->
+        <section id="message">
+
+            <h2>A Little Birthday Message 💖</h2>
+
+            <div class="message-box">
+
+                <p>
+                    Happy Birthday to one of the most amazing people
+                    I've had the chance to know! 🎉
+                </p>
+
+                <br>
+
+                <p>
+                    Life would definitely be a lot more boring without
+                    all the conversations, random jokes, stupid arguments,
+                    unforgettable moments and all the madness we've shared. 😂
+                </p>
+
+                <br>
+
+                <p>
+                    Thank you for being the wonderful friend that you are.
+                    I genuinely hope this year brings you everything you've
+                    been wishing for and much more.
+                </p>
+
+                <br>
+
+                <p>
+                    Keep smiling, keep laughing, keep annoying people
+                    occasionally 😜 and most importantly,
+                    never stop being YOU.
+                </p>
+
+                <br>
+
+                <p>
+                    Have the BEST birthday ever, Neha! 🎂🥳❤️
+                </p>
+
+            </div>
+
+        </section>
+
+
+        <!-- Memories -->
+        <section>
+
+            <h2>Some Memories 📸</h2>
+
+            <p class="section-subtitle">
+                A few moments that deserve a permanent place
+                on this little birthday page.
+            </p>
+
+            <div class="gallery">
+
+                <img src="images/photo1.png" alt="Memory 1">
+
+                <img src="images/photo2.jpg" alt="Memory 2">
+
+                <img src="images/photo3.jpg" alt="Memory 3">
+
+                <img src="images/photo4.jpg" alt="Memory 4">
+
+            </div>
+
+        </section>
+
+
+        <!-- Fun Section -->
+        <section>
+
+            <h2>Things That Make You... YOU 😂</h2>
+
+            <p class="section-subtitle">
+                Because every good friend deserves a section dedicated
+                to their completely unique personality.
+            </p>
+
+            <div class="cards">
+
+                <div class="card">
+
+                    <div class="emoji">😂</div>
+
+                    <h3>The Laugh</h3>
+
+                    <p>
+                        Somehow your laugh can turn even the most
+                        boring situation into a memorable one.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="emoji">💬</div>
+
+                    <h3>The Conversations</h3>
+
+                    <p>
+                        From serious discussions to completely
+                        pointless conversations... somehow we talk
+                        about everything.
+                    </p>
+
+                </div>
+
+
+                <div class="card">
+
+                    <div class="emoji">🤪</div>
+
+                    <h3>The Madness</h3>
+
+                    <p>
+                        Normal is overrated anyway. 😂
+                        Keep the madness going!
+                    </p>
+
+                </div>
+
+            </div>
+
+        </section>
+
+
+        <!-- Surprise Gift -->
+        <section class="surprise-section">
+
+            <h2>One Last Surprise 🎁</h2>
+
+            <p class="section-subtitle">
+                There's something waiting for you.
+                Go on... click the gift!
+            </p>
+
+            <div class="big-gift" onclick="showSurprise()">
+                🎁
+            </div>
+
+            <div id="surpriseMessage">
+
+                <p>
+                    🎉 SURPRISE! 🎉
+                </p>
+
+                <br>
+
+                <p>
+                    I hope this little website made you smile. 😊
+                </p>
+
+                <br>
+
+                <p>
+                    Here's to another year of crazy memories,
+                    endless laughs, random conversations and
+                    lots of amazing moments!
+                </p>
+
+                <br>
+
+                <p>
+                    <strong>Happy Birthday once again, Neha! ❤️</strong>
+                </p>
+
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <!-- Music -->
+    <audio id="birthdayMusic" loop>
+
+        <source src="music.mp3" type="audio/mpeg">
+
+    </audio>
+
+    <button class="music-btn" onclick="toggleMusic()" id="musicButton">
+        🎵
+    </button>
+
+
+    <!-- Footer -->
+    <footer>
+
+        Made with ❤️ for <strong>Neha</strong>
+
+        <br><br>
+
+        Because every great friendship deserves
+        a little celebration. 🎂
+
+    </footer>
+
+
+    <script>
+
+        /* Opening Screen */
+
+        function openSurprise() {
+
+            document
+                .getElementById("opening")
+                .classList.add("hide");
+
+            createConfetti();
+
+        }
+
+
+        /* Scroll to Message */
+
+        function scrollToMessage() {
+
+            document
+                .getElementById("message")
+                .scrollIntoView({
+                    behavior: "smooth"
+                });
+
+        }
+
+
+        /* Surprise Gift */
+
+        function showSurprise() {
+
+            const message =
+                document.getElementById("surpriseMessage");
+
+            message.style.display = "block";
+
+            createConfetti();
+
+            setTimeout(() => {
+
+                message.scrollIntoView({
+                    behavior: "smooth",
+                    block: "center"
+                });
+
+            }, 100);
+
+        }
+
+
+        /* Music */
+
+        let musicPlaying = false;
+
+        function toggleMusic() {
+
+            const music =
+                document.getElementById("birthdayMusic");
+
+            const button =
+                document.getElementById("musicButton");
+
+            if (musicPlaying) {
+
+                music.pause();
+
+                button.innerHTML = "🎵";
+
+                musicPlaying = false;
+
+            } else {
+
+                music.play()
+                    .then(() => {
+
+                        button.innerHTML = "🔊";
+
+                        musicPlaying = true;
+
+                    })
+                    .catch(() => {
+
+                        alert(
+                            "Please interact with the page first to play the music."
+                        );
+
+                    });
+
+            }
+
+        }
+
+
+        /* Confetti */
+
+        function createConfetti() {
+
+            const emojis = [
+                "🎉",
+                "🎊",
+                "✨",
+                "💖",
+                "🥳",
+                "🎂",
+                "❤️"
+            ];
+
+            for (let i = 0; i < 60; i++) {
+
+                const confetti =
+                    document.createElement("div");
+
+                confetti.className = "confetti";
+
+                confetti.innerHTML =
+                    emojis[
+                        Math.floor(
+                            Math.random() * emojis.length
+                        )
+                    ];
+
+                confetti.style.left =
+                    Math.random() * 100 + "vw";
+
+                confetti.style.fontSize =
+                    (Math.random() * 15 + 10) + "px";
+
+                confetti.style.animationDuration =
+                    (Math.random() * 2 + 2) + "s";
+
+                document.body.appendChild(confetti);
+
+                setTimeout(() => {
+
+                    confetti.remove();
+
+                }, 4000);
+
+            }
+
+        }
+
+
+        /* Floating Emojis */
+
+        function createFloatingEmoji() {
+
+            const emojis = [
+                "❤️",
+                "✨",
+                "🎈",
+                "🥳",
+                "💖",
+                "⭐"
+            ];
+
+            const emoji =
+                document.createElement("div");
+
+            emoji.className = "floating";
+
+            emoji.innerHTML =
+                emojis[
+                    Math.floor(
+                        Math.random() * emojis.length
+                    )
+                ];
+
+            emoji.style.left =
+                Math.random() * 100 + "vw";
+
+            emoji.style.animationDuration =
+                (Math.random() * 6 + 6) + "s";
+
+            document.body.appendChild(emoji);
+
+            setTimeout(() => {
+
+                emoji.remove();
+
+            }, 12000);
+
+        }
+
+
+        setInterval(createFloatingEmoji, 1200);
+
+    </script>
+
+</body>
+</html>
